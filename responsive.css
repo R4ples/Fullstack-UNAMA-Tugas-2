@@ -1,0 +1,219 @@
+@media (max-width: 1022px) {
+    nav,
+    .navlinks {
+        height: 48px;
+    }
+
+    .navlinks {
+        justify-content: space-between;
+        padding: 0 18px;
+    }
+
+    .navlink {
+        display: none;
+    }
+
+    .applelogo {
+        margin: 0;
+    }
+
+    .navicon {
+        margin-left: 0;
+    }
+
+    .respnavbar {
+        display: flex;
+    }
+
+    .infobar {
+        margin-top: 48px;
+        min-height: 46px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .hero-iphone {
+        height: 520px;
+        background-image: url("https://www.apple.com/v/homepage/images/iphone-18-pro/a/hero_iphone_18_pro__fqe1motd0ymy_small.jpg");
+        background-size: auto 100%;
+        background-position: center bottom;
+    }
+
+    .hero-duo {
+        height: 520px;
+        background-image: url("https://www.apple.com/v/homepage/images/iphone-duo/a/hero_iphone_duo_announce__fh4u8yzndpe2_small.jpg");
+        background-size: auto 100%;
+        background-position: center bottom;
+    }
+
+    .hero-watch {
+        height: 520px;
+        background-image: url("https://www.apple.com/v/homepage/images/apple-watch-series-12/a/hero_apple_watch_series_12__n9rln7bzvwya_small.jpg");
+        background-size: auto 100%;
+        background-position: center bottom;
+    }
+
+    .hero-text {
+        top: 24px;
+    }
+
+    .hero-text h1,
+    .hero-text h2 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+    }
+
+    .watch-text p {
+        margin-top: 250px;
+    }
+
+    .promo-grid {
+        grid-template-columns: 1fr;
+        padding: 3px;
+        gap: 3px;
+    }
+
+    .promo {
+        min-height: 500px;
+    }
+
+    .entertainment-feature {
+        grid-template-columns: 1fr;
+    }
+
+    .ent-card {
+        height: 380px;
+    }
+
+    .entertainment-small {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .infobar {
+        padding: 8px 12px;
+    }
+
+    .hero-iphone,
+    .hero-duo,
+    .hero-watch {
+        height: 470px;
+    }
+
+    .hero-iphone {
+        background-size: auto 92%;
+    }
+
+    .hero-duo {
+        background-size: auto 92%;
+    }
+
+    .hero-watch {
+        background-size: auto 92%;
+    }
+
+    .hero-text h1,
+    .hero-text h2 {
+        font-size: 25px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .watch-text p {
+        margin-top: 215px;
+    }
+
+    .promo {
+        min-height: 430px;
+    }
+
+    .promo-text h2 {
+        font-size: 22px;
+    }
+
+    .promo-text p {
+        font-size: 13px;
+    }
+
+    .entertainment {
+        padding-top: 28px;
+    }
+
+    .entertainment > h2 {
+        font-size: 25px;
+    }
+
+    .ent-card {
+        height: 300px;
+    }
+
+    .entertainment-small {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .small-card {
+        height: 110px;
+    }
+
+    .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 7px;
+    }
+}
+
+@media (min-width: 1023px) {
+    .hero-iphone {
+        height: 680px;
+        background-size: 100% auto;
+    }
+
+    .hero-duo {
+        height: 690px;
+        background-size: 100% auto;
+    }
+
+    .hero-watch {
+        height: 695px;
+        background-size: 100% auto;
+    }
+
+    .promo {
+        min-height: 580px;
+    }
+
+    .promo-text {
+        top: 52px;
+    }
+}
+
+.promo-macmini {
+    background-color: #f5f5f7;
+    background-image: url("https://www.apple.com/v/homepage/images/mac-mini/a/promo_mac_mini_m6__pwypzbjgopea_large.jpg");
+    background-position: center bottom;
+    background-size: cover;
+}
+
+.promo-macmini .promo-text {
+    color: #1d1d1f;
+}
+
+.promo-macmini .promo-text .links a {
+    background: #0071e3;
+    color: #fff;
+    border: 0;
+}

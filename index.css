@@ -1,0 +1,601 @@
+@import "https://fonts.googleapis.com/css?family=Poppins";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Poppins", "Helvetica", "Arial", sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+}
+
+a {
+    text-decoration: none;
+    color: #06c;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    background: rgba(22, 22, 22, .82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    z-index: 1000;
+}
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0 12px;
+    height: 44px;
+}
+
+.navlinks li {
+    display: flex;
+    align-items: center;
+}
+
+.applelogo {
+    margin: 0 22px 0 8px;
+}
+
+.navlink {
+    margin: 0 13px;
+    color: #d6d6d6;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.navicon {
+    margin-left: 22px;
+}
+
+.navicon a,
+.respnavbar a {
+    color: #d6d6d6;
+    font-size: 18px;
+}
+
+.respnavbar {
+    display: none;
+}
+
+.infobar {
+    margin-top: 44px;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background: #fff;
+    color: #555;
+    font-size: 12px;
+    text-align: center;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.hero-text {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.hero-text h1,
+.hero-text h2,
+.hero-text p,
+.hero-text small {
+    margin: 0;
+}
+
+.hero-text h1 {
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.hero-text h2 {
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.hero-text p {
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.hero-text small {
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.light {
+    color: #f5f5f7;
+}
+
+.dark {
+    color: #1d1d1f;
+}
+
+.hero-iphone {
+    height: 500px;
+    background-color: #000;
+    background-image: url("https://www.apple.com/v/homepage/images/iphone-18-pro/a/hero_iphone_18_pro__fqe1motd0ymy_large.jpg");
+    background-position: center center;
+    background-size: 100% auto;
+}
+
+.hero-iphone .hero-text {
+    top: 20px;
+}
+
+.hero-duo {
+    height: 500px;
+    background-color: #f5f5f7;
+    background-image: url("https://www.apple.com/v/homepage/images/iphone-duo/a/hero_iphone_duo_announce__fh4u8yzndpe2_large.jpg");
+    background-position: center center;
+    background-size: 100% auto;
+}
+
+.hero-duo .hero-text {
+    top: 26px;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 0 13px;
+    border-radius: 18px;
+    background: #0071e3;
+    color: #fff;
+    font-size: 12px;
+    line-height: 28px;
+}
+
+.links a + a {
+    background: transparent;
+    color: #0071e3;
+    border: 1px solid #0071e3;
+}
+
+.hero-watch {
+    height: 510px;
+    background-color: #000;
+    background-image: url("https://www.apple.com/v/homepage/images/apple-watch-series-12/a/hero_apple_watch_series_12__n9rln7bzvwya_large.jpg");
+    background-position: center center;
+    background-size: 100% auto;
+}
+
+.watch-text {
+    top: 24px;
+}
+
+.watch-text h2 {
+    font-size: 22px;
+}
+
+.watch-text h2 span:last-child {
+    font-weight: 400;
+}
+
+.watch-text p {
+    margin-top: 265px;
+    font-size: 16px;
+}
+
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+    padding: 5px;
+    background: #fff;
+}
+
+.promo {
+    position: relative;
+    min-height: 510px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.promo-text {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.promo-text h2,
+.promo-text p {
+    margin: 0;
+}
+
+.promo-text h2 {
+    font-size: 25px;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.promo-text p {
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.dark-card {
+    color: #fff;
+    background-color: #000;
+}
+
+.promo-ultra {
+    background-image: url("https://www.apple.com/v/homepage/images/apple-watch-ultra-4/a/promo_apple_watch_ultra_4__e4r3qertak2u_large.jpg");
+}
+
+.promo-airpods {
+    background-image: url("https://www.apple.com/v/homepage/images/airpods-5/a/promo_airpods_5__mnwdue4dcp66_large.jpg");
+}
+
+.promo-upgrade {
+    background-color: #f5f5f7;
+    background-image: url("https://www.apple.com/v/homepage/images/apple-upgrade/a/promo_apple_upgrade__jvn6udm4tx2e_large.jpg");
+}
+
+.promo-carriers {
+    background-color: #f5f5f7;
+    background-image: url("https://www.apple.com/v/homepage/images/carriers/a/promo_carriers__bkbchi56n5qq_large.jpg");
+}
+
+.promo-macbook {
+    background-image: url("https://www.apple.com/v/homepage/images/macbook-air-m5/a/promo_macbook_air_m5__e5xk2yysqiie_large.jpg");
+}
+
+.promo-card {
+    background-color: #f5f5f7;
+    background-image: url("https://www.apple.com/v/homepage/images/apple-card/a/promo_apple_card__d8xz4kd4evwy_large.jpg");
+}
+
+.promo-upgrade .promo-text,
+.promo-carriers .promo-text,
+.promo-macbook .promo-text,
+.promo-card .promo-text {
+    color: #1d1d1f;
+}
+
+.promo-upgrade .promo-text .links a,
+.promo-carriers .promo-text .links a,
+.promo-macbook .promo-text .links a,
+.promo-card .promo-text .links a {
+    background: #0071e3;
+    color: #fff;
+    border: 0;
+}
+
+.promo-macbook .promo-text,
+.promo-card .promo-text {
+    top: 28px;
+}
+
+.entertainment {
+    padding: 38px 5px 45px;
+    background: #fff;
+}
+
+.entertainment > h2 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.entertainment-feature {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1.2fr;
+    gap: 5px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.ent-card {
+    position: relative;
+    height: 360px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.entertainment-sports {
+    background: linear-gradient(135deg, #ef8b00, #3b7f34);
+}
+
+.entertainment-slow {
+    background: linear-gradient(135deg, #ded8c5, #8d8a83 55%, #1d2229);
+}
+
+.entertainment-f1 {
+    background: linear-gradient(135deg, #12263d, #8d1821 60%, #111);
+}
+
+.ent-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px 22px 22px;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,.82));
+    display: flex;
+    flex-direction: column;
+}
+
+.ent-overlay strong {
+    font-size: 22px;
+}
+
+.ent-overlay span {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.ent-overlay a {
+    margin-top: 12px;
+    width: fit-content;
+    padding: 7px 13px;
+    border-radius: 15px;
+    background: #fff;
+    color: #111;
+    font-size: 11px;
+}
+
+.entertainment-small {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    max-width: 1400px;
+    margin: 5px auto 0;
+}
+
+.small-card {
+    height: 125px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+    color: #fff;
+    font-size: 11px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.small-card span {
+    background: rgba(0,0,0,.6);
+    border-radius: 12px;
+    padding: 5px 10px;
+}
+
+.music-one {
+    background: linear-gradient(135deg, #6d214f, #f1a7c2);
+}
+
+.music-two {
+    background: linear-gradient(135deg, #dbe6ff, #e98bca);
+}
+
+.fitness-one {
+    background: linear-gradient(135deg, #74a6ff, #ef6d8d);
+}
+
+.music-three {
+    background: linear-gradient(135deg, #4c2174, #ef4c7c);
+}
+
+.game-one {
+    background: linear-gradient(135deg, #a8e0ff, #8b62e8);
+}
+
+footer {
+    background: #f5f5f7;
+    color: #6e6e73;
+    padding: 28px 20px 20px;
+}
+
+.footer-content {
+    max-width: 980px;
+    margin: 0 auto;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.footer-content p {
+    margin: 0 0 12px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    border-top: 1px solid #d2d2d7;
+    padding-top: 20px;
+    margin-top: 18px;
+}
+
+.footer-columns h3 {
+    margin: 0 0 9px;
+    color: #1d1d1f;
+    font-size: 11px;
+}
+
+.footer-columns a {
+    display: block;
+    margin: 5px 0;
+    color: #6e6e73;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    border-top: 1px solid #d2d2d7;
+    margin-top: 20px;
+    padding-top: 12px;
+}
+
+.footer-bottom a {
+    color: #424245;
+}
+
+
+/* Desktop sizing tuned to match the supplied Apple-style reference screenshots */
+.apple-symbol {
+    display: inline-block;
+    margin-right: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.98em;
+    line-height: 1;
+    vertical-align: -0.03em;
+}
+
+/* Hero image proportions */
+.hero-iphone {
+    height: 680px;
+    background-size: 100% auto;
+}
+
+.hero-duo {
+    height: 690px;
+    background-size: 100% auto;
+}
+
+.hero-watch {
+    height: 695px;
+    background-size: 100% auto;
+}
+
+/* Product cards */
+.promo {
+    min-height: 580px;
+}
+
+.promo-text {
+    top: 52px;
+}
+
+/* Mac mini replaces the old AirPods card */
+.promo-macmini {
+    background-color: #f5f5f7;
+    background-image: url("https://www.apple.com/v/homepage/images/mac-mini/a/promo_mac_mini_m6__pwypzbjgopea_large.jpg");
+    background-position: center bottom;
+    background-size: cover;
+}
+
+.promo-macmini .promo-text {
+    color: #1d1d1f;
+}
+
+.promo-macmini .promo-text .links a {
+    background: #0071e3;
+    color: #fff;
+    border: 0;
+}
+
+@media (max-width: 1022px) {
+    .hero-iphone {
+        height: 560px;
+        background-size: auto 100%;
+    }
+
+    .hero-duo {
+        height: 560px;
+        background-size: auto 100%;
+    }
+
+    .hero-watch {
+        height: 560px;
+        background-size: auto 100%;
+    }
+
+    .promo {
+        min-height: 500px;
+    }
+
+    .promo-text {
+        top: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-iphone,
+    .hero-duo,
+    .hero-watch {
+        height: 520px;
+    }
+
+    .promo {
+        min-height: 460px;
+    }
+}
+
+.apple-symbol {
+    display: inline-flex;
+    width: 0.95em;
+    height: 0.95em;
+    margin-right: 4px;
+    vertical-align: -0.08em;
+    align-items: center;
+    justify-content: center;
+}
+
+.apple-symbol svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    display: block;
+}

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="responsive.css">
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <style>
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 44px;
+      background: rgba(250, 250, 252, 0.94);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      z-index: 1000;
+    }
+
+    .top-nav .navlinks {
+      width: 100%;
+      max-width: 1040px;
+      height: 44px;
+      margin: 0 auto;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+    }
+
+    .top-nav .navlinks li {
+      display: flex;
+      align-items: center;
+      height: 44px;
+    }
+
+    .top-nav .applelogo {
+      margin: 0;
+      padding: 0 18px;
+    }
+
+    .top-nav .navlink {
+      margin: 0;
+      padding: 0 14px;
+      color: #1d1d1f;
+      font-size: 12px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .top-nav .navlink:hover {
+      color: #000;
+    }
+
+    .top-nav .navicon {
+      margin: 0;
+      padding: 0 14px;
+    }
+
+    .top-nav .navicon a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1d1d1f;
+      line-height: 1;
+    }
+
+    .top-nav .respnavbar {
+      display: none;
+    }
+
+    .infobar {
+      margin-top: 44px;
+    }
+
+    /* Mega dropdown menu */
+    .top-nav .navlink {
+      position: relative;
+      font-weight: 400;
+      transition: color .12s ease;
+    }
+
+    .top-nav .navlink:hover,
+    .top-nav .navlink:focus,
+    .top-nav .navlink.is-active {
+      font-weight: 600;
+      color: #000;
+    }
+
+    .mega-dropdown {
+      position: fixed;
+      top: 44px;
+      left: 0;
+      width: 100%;
+      background: rgba(250, 250, 252, 0.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      z-index: 999;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .16s ease, opacity .12s ease;
+      pointer-events: none;
+    }
+
+    .mega-dropdown.open {
+      max-height: 80px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mega-dropdown-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 14px 8px 18px;
+      display: flex;
+      gap: 64px;
+      opacity: 0;
+      transition: opacity .12s ease;
+    }
+
+    .mega-dropdown-inner.show {
+      opacity: 1;
+    }
+
+    .mega-dropdown-inner a {
+      display: block;
+      color: #6e6e73;
+      font-size: 12px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .mega-dropdown-inner a:hover {
+      color: #1d1d1f;
+    }
+
+    @media (max-width: 1022px) {
+      .top-nav .navlinks {
+        max-width: none;
+        justify-content: space-between;
+        padding: 0 14px;
+      }
+
+      .top-nav .navlink {
+        display: none;
+      }
+
+      .top-nav .applelogo,
+      .top-nav .navicon {
+        padding: 0;
+      }
+
+      .top-nav .respnavbar {
+        display: flex;
+      }
+
+      .top-nav .respnavbar a {
+        color: #1d1d1f;
+        font-size: 17px;
+      }
+
+      .infobar {
+        margin-top: 48px;
+      }
+
+      .mega-dropdown {
+        display: none;
+      }
+    }
+  </style>
+
+
+  <style>
+    :root {
+      --page-bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-soft: rgba(255, 255, 255, 0.72);
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --border: rgba(0, 0, 0, 0.10);
+      --glass-border: rgba(255, 255, 255, 0.42);
+      --glass-bg: rgba(255, 255, 255, 0.28);
+      --glass-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+    }
+
+    body.dark-mode {
+      --page-bg: #050506;
+      --surface: #101011;
+      --surface-soft: rgba(30, 30, 32, 0.78);
+      --text: #f5f5f7;
+      --muted: #a1a1a6;
+      --border: rgba(255, 255, 255, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.20);
+      --glass-bg: rgba(30, 30, 32, 0.38);
+      --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    body {
+      background: var(--page-bg);
+      color: var(--text);
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    .top-nav {
+      background: rgba(250, 250, 252, 0.78);
+      border-bottom: 1px solid var(--border);
+      transition: background-color .35s ease, border-color .35s ease;
+    }
+
+    body.dark-mode .top-nav {
+      background: rgba(18, 18, 20, 0.72);
+    }
+
+    body.dark-mode .top-nav .navlink,
+    body.dark-mode .top-nav .navicon a,
+    body.dark-mode .top-nav .respnavbar a {
+      color: #f5f5f7;
+    }
+
+    body.dark-mode .top-nav svg path {
+      fill: #f5f5f7;
+    }
+
+    body.dark-mode .top-nav svg path[fill="none"] {
+      fill: none;
+      stroke: #f5f5f7;
+    }
+
+    body.dark-mode .mega-dropdown {
+      background: rgba(18, 18, 20, 0.92);
+    }
+
+    body.dark-mode .top-nav .navlink:hover,
+    body.dark-mode .top-nav .navlink:focus,
+    body.dark-mode .top-nav .navlink.is-active {
+      color: #fff;
+    }
+
+    body.dark-mode .mega-dropdown-inner a {
+      color: #a1a1a6;
+    }
+
+    body.dark-mode .mega-dropdown-inner a:hover {
+      color: #f5f5f7;
+    }
+
+    .theme-toggle-wrap {
+      margin-left: 4px;
+    }
+
+    .theme-toggle {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border: 1px solid rgba(128, 128, 128, 0.22);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.30);
+      color: #1d1d1f;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      line-height: 1;
+      transition: transform .25s ease, background-color .25s ease, color .25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    body.dark-mode .theme-toggle {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(255, 255, 255, 0.20);
+    }
+
+    .promo {
+      border-radius: 20px;
+      isolation: isolate;
+    }
+
+    .promo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,0) 38%, rgba(255,255,255,.08));
+    }
+
+    .promo-text {
+      width: min(88%, 430px);
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      padding: 18px 22px;
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px) saturate(145%);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
+      box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.35);
+      transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .promo-text .links a,
+    .promo-text .links a + a {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .ent-card, .small-card {
+      border-radius: 20px;
+      isolation: isolate;
+    }
+
+    .ent-overlay {
+      margin: 14px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 20px;
+      background: rgba(20,20,22,.34);
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+      box-shadow: 0 14px 40px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.28);
+    }
+
+    .small-card span {
+      background: rgba(20,20,22,.35);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .infobar,
+    .entertainment,
+    footer {
+      background: var(--surface);
+      color: var(--muted);
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    body.dark-mode .promo-grid {
+      background: #050506;
+    }
+
+    body.dark-mode .hero-duo,
+    body.dark-mode .promo-upgrade,
+    body.dark-mode .promo-carriers,
+    body.dark-mode .promo-card {
+      filter: brightness(.78);
+    }
+
+    body.dark-mode .hero-duo .hero-text,
+    body.dark-mode .promo-upgrade .promo-text,
+    body.dark-mode .promo-carriers .promo-text,
+    body.dark-mode .promo-card .promo-text {
+      color: #fff;
+    }
+
+    body.dark-mode .footer-columns {
+      border-color: var(--border);
+    }
+
+    body.dark-mode .footer-columns h3 {
+      color: #f5f5f7;
+    }
+
+    body.dark-mode .footer-columns a,
+    body.dark-mode .footer-bottom a {
+      color: #a1a1a6;
+    }
+
+    @media (max-width: 1022px) {
+      .theme-toggle-wrap {
+        margin-left: 0;
+      }
+
+      .theme-toggle {
+        width: 28px;
+        height: 28px;
+      }
+
+      .promo-text {
+        width: 88%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="top-nav">
+    <ul class="navlinks">
+      <li class="applelogo">
+        <a title="Apple" href="https://www.apple.com/id/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="20" viewBox="0 0 24 24">
+            <path fill="#1d1d1f"
+              d="M14.94,5.19A4.38,4.38,0,0,0,16,2,4.44,4.44,0,0,0,13,3.52,4.17,4.17,0,0,0,12,6.61,3.69,3.69,0,0,0,14.94,5.19Zm2.52,7.44a4.51,4.51,0,0,1,2.16-3.81,4.66,4.66,0,0,0-3.66-2c-1.56-.16-3,.91-3.83.91s-2-.89-3.3-.87A4.92,4.92,0,0,0,4.69,9.39C2.93,12.45,4.24,17,6,19.47,6.8,20.68,7.8,22.05,9.12,22s1.75-.82,3.28-.82,2,.82,3.3.79,2.22-1.24,3.06-2.45a11,11,0,0,0,1.38-2.85A4.41,4.41,0,0,1,17.46,12.63Z">
+            </path>
+          </svg>
+        </a>
+      </li>
+      <li><a class="navlink" data-menu="store" href="https://www.apple.com/store">Store</a></li>
+      <li><a class="navlink" data-menu="mac" href="https://www.apple.com/mac/">Mac</a></li>
+      <li><a class="navlink" data-menu="ipad" href="https://www.apple.com/ipad/">iPad</a></li>
+      <li><a class="navlink" data-menu="iphone" href="https://www.apple.com/iphone/">iPhone</a></li>
+      <li><a class="navlink" data-menu="watch" href="https://www.apple.com/watch/">Watch</a></li>
+      <li><a class="navlink" data-menu="vision" href="https://www.apple.com/apple-vision-pro/">Vision</a></li>
+      <li><a class="navlink" data-menu="airpods" href="https://www.apple.com/airpods/">AirPods</a></li>
+      <li><a class="navlink" data-menu="tvhome" href="https://www.apple.com/tv-home/">TV &amp; Home</a></li>
+      <li><a class="navlink" data-menu="entertainment" href="https://www.apple.com/services/">Entertainment</a></li>
+      <li><a class="navlink" data-menu="accessories" href="https://www.apple.com/shop/accessories/all">Accessories</a></li>
+      <li><a class="navlink" data-menu="support" href="https://support.apple.com/">Support</a></li>
+      <li class="navicon">
+        <a href="https://www.apple.com/id/search/" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24">
+            <path fill="#1d1d1f" d="M10.8 18.6a7.8 7.8 0 1 1 5.5-2.3l4.2 4.2-1.4 1.4-4.2-4.2a7.77 7.77 0 0 1-4.1 1.1Zm0-2a5.8 5.8 0 1 0 0-11.6 5.8 5.8 0 0 0 0 11.6Z"/>
+          </svg>
+        </a>
+      </li>
+      <li class="navicon">
+        <a href="https://www.apple.com/id/shop/bag/" aria-label="Shopping Bag">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 24 24">
+            <path fill="none" stroke="#1d1d1f" stroke-width="1.5"
+              d="M5.5 8.5h13l1 12h-15l1-12Zm3 0V6a3.5 3.5 0 0 1 7 0v2.5"/>
+          </svg>
+        </a>
+      </li>
+      <li class="theme-toggle-wrap">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Aktifkan dark mode" title="Dark mode">
+          <span id="themeIcon">☾</span>
+        </button>
+      </li>
+      <li class="respnavbar">
+        <a href="#" aria-label="Menu">☰</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="mega-dropdown" id="megaDropdown">
+    <div class="mega-dropdown-inner" id="megaDropdownInner"></div>
+  </div>
+
+  <div class="infobar">
+    <span>Last chance to get a gift card up to $150 when you buy Mac or iPad with education savings. Ends 9.24. <a href="#">Shop &gt;</a></span>
+  </div>
+
+  <main>
+    <section class="hero hero-iphone">
+      <div class="hero-text light">
+        <h1>iPhone 18 Pro</h1>
+        <p>Pro further.</p>
+        <div class="links">
+          <a href="#">Learn more</a>
+          <a href="#">Buy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero hero-duo">
+      <div class="hero-text dark">
+        <h2>iPhone Duo</h2>
+        <p>Hello, hello.</p>
+        <small>Pre-order starting 5:00 a.m. PT on 10.16</small>
+        <small>Available starting 10.23</small>
+        <div class="links">
+          <a href="#">Learn more</a>
+          <a href="#">View pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero hero-watch">
+      <div class="hero-text light watch-text">
+        <h2><span class="apple-symbol" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.94 5.19A4.38 4.38 0 0 0 16 2a4.44 4.44 0 0 0-3 1.52A4.17 4.17 0 0 0 12 6.61a3.69 3.69 0 0 0 2.94-1.42Zm2.52 7.44a4.51 4.51 0 0 1 2.16-3.81 4.66 4.66 0 0 0-3.66-2c-1.56-.16-3 .91-3.83.91s-2-.89-3.3-.87A4.92 4.92 0 0 0 4.69 9.39C2.93 12.45 4.24 17 6 19.47 6.8 20.68 7.8 22.05 9.12 22s1.75-.82 3.28-.82 2 .82 3.3.79 2.22-1.24 3.06-2.45a11 11 0 0 0 1.38-2.85 4.41 4.41 0 0 1-2.3-3.81Z"/>
+              </svg>
+            </span> WATCH <span>SERIES 12</span></h2>
+        <small>The most accurate heart rate sensing in a wearable.</small>
+        <div class="links">
+          <a href="#">Learn more</a>
+          <a href="#">Buy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo-grid">
+      <article class="promo promo-ultra dark-card">
+        <div class="promo-text">
+          <h2><span class="apple-symbol" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.94 5.19A4.38 4.38 0 0 0 16 2a4.44 4.44 0 0 0-3 1.52A4.17 4.17 0 0 0 12 6.61a3.69 3.69 0 0 0 2.94-1.42Zm2.52 7.44a4.51 4.51 0 0 1 2.16-3.81 4.66 4.66 0 0 0-3.66-2c-1.56-.16-3 .91-3.83.91s-2-.89-3.3-.87A4.92 4.92 0 0 0 4.69 9.39C2.93 12.45 4.24 17 6 19.47 6.8 20.68 7.8 22.05 9.12 22s1.75-.82 3.28-.82 2 .82 3.3.79 2.22-1.24 3.06-2.45a11 11 0 0 0 1.38-2.85 4.41 4.41 0 0 1-2.3-3.81Z"/>
+              </svg>
+            </span> WATCH ULTRA 4</h2>
+          <p>A battery you can’t outrun.</p>
+          <div class="links">
+            <a href="#">Learn more</a>
+            <a href="#">Buy</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo promo-macmini">
+        <div class="promo-text">
+          <h2>Mac mini</h2>
+          <p>Now with M6 and M5 Pro.</p>
+          <div class="links">
+            <a href="#">Learn more</a>
+            <a href="#">Buy</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo promo-upgrade">
+        <div class="promo-text">
+          <h2><span class="apple-symbol" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.94 5.19A4.38 4.38 0 0 0 16 2a4.44 4.44 0 0 0-3 1.52A4.17 4.17 0 0 0 12 6.61a3.69 3.69 0 0 0 2.94-1.42Zm2.52 7.44a4.51 4.51 0 0 1 2.16-3.81 4.66 4.66 0 0 0-3.66-2c-1.56-.16-3 .91-3.83.91s-2-.89-3.3-.87A4.92 4.92 0 0 0 4.69 9.39C2.93 12.45 4.24 17 6 19.47 6.8 20.68 7.8 22.05 9.12 22s1.75-.82 3.28-.82 2 .82 3.3.79 2.22-1.24 3.06-2.45a11 11 0 0 0 1.38-2.85 4.41 4.41 0 0 1-2.3-3.81Z"/>
+              </svg>
+            </span> Upgrade</h2>
+          <p>Love it. Lease it. Upgrade it.<sup>2</sup></p>
+          <div class="links">
+            <a href="#">Learn more</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo promo-carriers">
+        <div class="promo-text">
+          <h2>Incredible carrier<br>deals at Apple</h2>
+          <p>Explore deals that accept eligible<br>trade-in devices in any condition.<sup>3</sup></p>
+          <div class="links">
+            <a href="#">Find your deal</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo promo-macbook">
+        <div class="promo-text">
+          <h2>MacBook Air</h2>
+          <p>Now supercharged by M5.</p>
+          <div class="links">
+            <a href="#">Learn more</a>
+            <a href="#">Buy</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo promo-card">
+        <div class="promo-text">
+          <h2><span class="apple-symbol" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M14.94 5.19A4.38 4.38 0 0 0 16 2a4.44 4.44 0 0 0-3 1.52A4.17 4.17 0 0 0 12 6.61a3.69 3.69 0 0 0 2.94-1.42Zm2.52 7.44a4.51 4.51 0 0 1 2.16-3.81 4.66 4.66 0 0 0-3.66-2c-1.56-.16-3 .91-3.83.91s-2-.89-3.3-.87A4.92 4.92 0 0 0 4.69 9.39C2.93 12.45 4.24 17 6 19.47 6.8 20.68 7.8 22.05 9.12 22s1.75-.82 3.28-.82 2 .82 3.3.79 2.22-1.24 3.06-2.45a11 11 0 0 0 1.38-2.85 4.41 4.41 0 0 1-2.3-3.81Z"/>
+              </svg>
+            </span> Card</h2>
+          <p>Get up to 3% Daily Cash back<br>with every purchase.</p>
+          <div class="links">
+            <a href="#">Learn more</a>
+            <a href="#">Apply now</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="entertainment">
+      <h2>Endless entertainment.</h2>
+      <div class="entertainment-feature">
+        <article class="ent-card entertainment-sports">
+          <div class="ent-overlay">
+            <strong>MLS on Apple TV</strong>
+            <span>Watch every club, every match, live—all season long.</span>
+            <a href="#">Stream now</a>
+          </div>
+        </article>
+        <article class="ent-card entertainment-slow">
+          <div class="ent-overlay">
+            <strong>Slow Horses</strong>
+            <span>Thriller · New season.</span>
+            <a href="#">Stream now</a>
+          </div>
+        </article>
+        <article class="ent-card entertainment-f1">
+          <div class="ent-overlay">
+            <strong>F1 on Apple TV</strong>
+            <span>Every Grand Prix™, live and on demand.</span>
+            <a href="#">Stream now</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="entertainment-small">
+        <article class="small-card music-one"><span>Listen now</span></article>
+        <article class="small-card music-two"><span>Play now</span></article>
+        <article class="small-card fitness-one"><span>Watch now</span></article>
+        <article class="small-card music-three"><span>Listen now</span></article>
+        <article class="small-card game-one"><span>Play now</span></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>
+        1. Based on data from an Apple-conducted study of heart rate accuracy during July and August 2026.
+        2. Subject to eligibility and applicable terms.
+        3. Trade-in values and carrier offers vary by device and plan.
+      </p>
+      <p>
+        This website is a project created for educational purposes only. The content, design, and layout are based on the
+        official Apple website and are intended to showcase the skills of the creator. Apple Inc. does not endorse or
+        sponsor this project.
+      </p>
+
+      <div class="footer-columns">
+        <div>
+          <h3>Shop and Learn</h3>
+          <a href="#">Store</a><a href="#">Mac</a><a href="#">iPad</a><a href="#">iPhone</a><a href="#">Watch</a><a href="#">AirPods</a>
+        </div>
+        <div>
+          <h3>Account</h3>
+          <a href="#">Manage Your Apple Account</a><a href="#">Apple Store Account</a><a href="#">iCloud.com</a>
+        </div>
+        <div>
+          <h3>Apple Store</h3>
+          <a href="#">Find a Store</a><a href="#">Genius Bar</a><a href="#">Today at Apple</a><a href="#">Apple Camp</a>
+        </div>
+        <div>
+          <h3>For Business</h3>
+          <a href="#">Apple and Business</a><a href="#">Shop for Business</a>
+        </div>
+        <div>
+          <h3>About Apple</h3>
+          <a href="#">Newsroom</a><a href="#">Apple Leadership</a><a href="#">Career Opportunities</a><a href="#">Contact Apple</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Copyright © 2026 Apple Inc. All rights reserved.</span>
+        <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a> · <a href="#">Sales and Refunds</a> · <a href="#">Legal</a> · <a href="#">Site Map</a></span>
+        <span>Indonesia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function setTheme(theme) {
+      const isDark = theme === 'dark';
+      document.body.classList.toggle('dark-mode', isDark);
+      themeIcon.textContent = isDark ? '☀' : '☾';
+      themeToggle.setAttribute('aria-label', isDark ? 'Aktifkan light mode' : 'Aktifkan dark mode');
+      themeToggle.setAttribute('title', isDark ? 'Light mode' : 'Dark mode');
+      localStorage.setItem('appleTheme', theme);
+    }
+
+    const savedTheme = localStorage.getItem('appleTheme');
+    const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    setTheme(savedTheme || preferredTheme);
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
+    });
+
+    // Mega dropdown menu (hover di Store, Mac, iPad, dst)
+    const menuData = {
+      store:         ['Shop', 'Quick Links', 'Shop Special Stores'],
+      mac:           ['Explore Mac', 'Shop Mac', 'More from Mac'],
+      ipad:          ['Explore iPad', 'Shop iPad', 'More from iPad'],
+      iphone:        ['Explore iPhone', 'Shop iPhone', 'More from iPhone'],
+      watch:         ['Explore Watch', 'Shop Watch', 'More from Watch'],
+      vision:        ['Explore Vision', 'Shop Vision', 'More from Vision'],
+      airpods:       ['Explore AirPods', 'Shop AirPods', 'More from AirPods'],
+      tvhome:        ['Explore TV & Home', 'Shop TV & Home', 'More from TV & Home'],
+      entertainment: ['Explore Entertainment', 'Support'],
+      accessories:   ['Explore Accessories', 'Shop Accessories', 'More from Accessories'],
+      support:       ['Explore Support', 'Get Help', 'Helpful Topics']
+    };
+
+    const megaDropdown = document.getElementById('megaDropdown');
+    const megaDropdownInner = document.getElementById('megaDropdownInner');
+    const navLinksWithMenu = document.querySelectorAll('.navlink[data-menu]');
+    let closeTimer = null;
+    let currentMenu = null;
+
+    function setActiveLink(key) {
+      navLinksWithMenu.forEach(l => l.classList.toggle('is-active', l.dataset.menu === key));
+    }
+
+    function renderMenu(key) {
+      const items = menuData[key];
+      if (!items) return;
+      megaDropdownInner.innerHTML = items.map(label => `<a href="#">${label}</a>`).join('');
+      requestAnimationFrame(() => megaDropdownInner.classList.add('show'));
+    }
+
+    function openMenu(key) {
+      clearTimeout(closeTimer);
+      setActiveLink(key);
+      if (currentMenu === key && megaDropdown.classList.contains('open')) return;
+      currentMenu = key;
+
+      if (megaDropdown.classList.contains('open')) {
+        // sudah terbuka: crossfade cepat ke menu baru
+        megaDropdownInner.classList.remove('show');
+        setTimeout(() => {
+          if (currentMenu === key) renderMenu(key);
+        }, 70);
+      } else {
+        megaDropdown.classList.add('open');
+        renderMenu(key);
+      }
+    }
+
+    function scheduleClose() {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => {
+        megaDropdown.classList.remove('open');
+        megaDropdownInner.classList.remove('show');
+        setActiveLink(null);
+        currentMenu = null;
+      }, 120);
+    }
+
+    navLinksWithMenu.forEach(link => {
+      link.addEventListener('mouseenter', () => openMenu(link.dataset.menu));
+      link.addEventListener('focus', () => openMenu(link.dataset.menu));
+      link.addEventListener('mouseleave', scheduleClose);
+      link.addEventListener('blur', scheduleClose);
+    });
+
+    megaDropdown.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+    megaDropdown.addEventListener('mouseleave', scheduleClose);
+  </script>
+
+</body>
+
+</html>
